@@ -11,7 +11,7 @@ namespace Calculator
     internal class Decompose
     {
         private static String NUM = "1234567890";
-        private static String SYM = "*-+/()";
+        private static String SYM = "*-+/";
         private static String BRC = "()";
         internal static List<String> DecomposeString(String arg)
         {
@@ -23,14 +23,40 @@ namespace Calculator
             }
             if (SYM.IndexOf(arg[0].ToString()) != -1)
                 return Exceptions.Call("Symbol on first pos");
-            else 
-                past = arg[0].ToString();
 
-            for (int i = 1; i < arg.Length; i++)
+            for (int i = 0; i < arg.Length; i++)
             {
                 if (BRC.IndexOf(arg[i].ToString()) != -1)
-                { 
-
+                {
+                    if (past != "") 
+                    { 
+                        string temp = past;
+                        decomposedString.Add(past);
+                        if (NUM.IndexOf(temp[temp.Length - 1].ToString()) != -1)
+                        {
+                            decomposedString.Add("*");
+                        }
+                    }
+                    int count = 1;
+                    int j = i + 1;
+                    for (; j < arg.Length; j++)
+                    {
+                        if (arg[j].Equals('('))
+                            count++;
+                        if (arg[j].Equals(')'))
+                            count--;
+                        if (count == 0)
+                            break;
+                        if (count == -1)
+                            return Exceptions.Call("Too many brackets");
+                    }
+                    if (j < arg.Length && NUM.IndexOf(arg[j + 1].ToString()) != -1)
+                        return Exceptions.Call("Number after brackets");
+                    String substring = arg.Substring(i + 1, j - i - 1);
+                    String num = Сalculation.List((DecomposeString(substring)))[0];
+                    i = j;
+                    past = num;
+                    continue;
                 }
                 if (SYM.IndexOf(arg[i].ToString()) != -1)
                 {
@@ -52,7 +78,7 @@ namespace Calculator
                 }
                 else
                 {
-                    if (SYM.IndexOf(past[past.Length - 1].ToString()) != -1)
+                    if (past.Length != 0 && SYM.IndexOf(past[past.Length - 1].ToString()) != -1)
                     {
                         decomposedString.Add(past);
                         past = "";

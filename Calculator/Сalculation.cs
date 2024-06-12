@@ -10,7 +10,7 @@ namespace Calculator
 {
     internal class Сalculation
     {
-        internal static List<String> ListCalculation(List<String> list)
+        internal static List<String> List(List<String> list)
         {
             double calc;
             for (int i = 0; i < list.Count; i++)

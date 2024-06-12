@@ -9,7 +9,7 @@ namespace Calculator
     internal class Exceptions
     {
         public static List<String> Call(string problem) {
-            Console.WriteLine("The problem is: \n" + problem);
+            Console.WriteLine("The problem is: \n" + problem + "\nAnswer isn't correct");
             return new List<String>() { "0" };
         }
     }
