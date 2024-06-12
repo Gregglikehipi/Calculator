@@ -10,6 +10,9 @@ namespace Calculator
 
     internal class Decompose
     {
+        private static String NUM = "1234567890";
+        private static String SYM = "*-+/()";
+        private static String BRC = "()";
         internal static List<String> DecomposeString(String arg)
         {
             List<String> decomposedString = new List<String>();
@@ -18,43 +21,38 @@ namespace Calculator
             {
                 return new List<String>() {"0"};
             }
-            if ("*-+/".IndexOf(arg[0].ToString()) != -1)
-            {
-                Console.WriteLine("MATH GO WRONG1");
-                return new List<String>() { "0" };
-            }
+            if (SYM.IndexOf(arg[0].ToString()) != -1)
+                return Exceptions.Call("Symbol on first pos");
             else 
                 past = arg[0].ToString();
 
             for (int i = 1; i < arg.Length; i++)
             {
-                if ("*-+/".IndexOf(arg[i].ToString()) != -1)
+                if (BRC.IndexOf(arg[i].ToString()) != -1)
+                { 
+
+                }
+                if (SYM.IndexOf(arg[i].ToString()) != -1)
                 {
                     if (past[past.Length - 1].Equals('*'))
                     {
                         if (past.Length == 1)
                             past += arg[i];
                         else
-                        {
-                            Console.WriteLine("MATH GO WRONG2");
-                            return new List<String>() { "0" };
-                        }
+                            return Exceptions.Call("Too many symbols");
                         continue;
                     }
-                    if ("1234567890".IndexOf(past[past.Length - 1].ToString()) != -1)
+                    if (NUM.IndexOf(past[past.Length - 1].ToString()) != -1)
                     {
                         decomposedString.Add(past);
                         past = arg[i].ToString();
                     }
                     else
-                    {
-                        Console.WriteLine("MATH GO WRONG3");
-                        return new List<String>() { "0" };
-                    }
+                        return Exceptions.Call("Too many different symbols");
                 }
                 else
                 {
-                    if ("*-+/".IndexOf(past[past.Length - 1].ToString()) != -1)
+                    if (SYM.IndexOf(past[past.Length - 1].ToString()) != -1)
                     {
                         decomposedString.Add(past);
                         past = "";
@@ -62,13 +60,10 @@ namespace Calculator
                     past += arg[i];
                 }
             }
-            if ("1234567890".IndexOf(past[past.Length - 1].ToString()) != -1)
+            if (NUM.IndexOf(past[past.Length - 1].ToString()) != -1)
                 decomposedString.Add(past);
             else
-            {
-                Console.WriteLine("MATH GO WRONG4");
-                return new List<String>() { "0" };
-            }
+                return Exceptions.Call("Symbol on last pos");
             return decomposedString;
         }
     }
