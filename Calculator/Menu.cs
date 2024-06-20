@@ -10,19 +10,11 @@ namespace Calculator
     {
         public static void Screen()
         {
-            String hi;
-            for (int i = 0; i < 10; i++)
+            while (true)
             {
-                hi = Console.ReadLine();
-                List<String> decomposedString = Decompose.DecomposeString(hi);
-
-                foreach (String str in decomposedString)
-                {
-                    Console.WriteLine(str);
-                }
-                Console.WriteLine(Сalculation.List(decomposedString)[0]);
+                string s = Console.ReadLine();
+                Console.WriteLine(Warden.Observe(s));
             }
-            Console.WriteLine("Hello World!");
         }
     }
 }

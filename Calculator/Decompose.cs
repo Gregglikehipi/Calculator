@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Calculator
 {
-
     internal class Decompose
-    {
+    { 
+        /*
         private static String NUM = "1234567890";
         private static String SYM = "*-+/";
         private static String BRC = "()";
@@ -92,5 +92,6 @@ namespace Calculator
                 return Exceptions.Call("Symbol on last pos");
             return decomposedString;
         }
+        */
     }
 }
