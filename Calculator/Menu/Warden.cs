@@ -4,8 +4,9 @@ using System.IO.Pipes;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Calculator.Engine;
 
-namespace Calculator
+namespace Calculator.Menu
 {
     internal static class Warden
     {
@@ -22,7 +23,7 @@ namespace Calculator
             {
                 ans = Сalculation.Calculate(newLine)[0];
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 ans = ex.Message;
             }

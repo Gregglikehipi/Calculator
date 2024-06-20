@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Calculator.Operations
+namespace Calculator.Engine.Operations
 {
     internal class Exponentiation : IOperation
     {
         public Exponentiation() { }
-        public List<String> Apply(List<String> list)
+        public List<string> Apply(List<string> list)
         {
             double calc;
             double blank;

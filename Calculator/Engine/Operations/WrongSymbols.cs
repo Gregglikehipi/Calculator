@@ -4,19 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Calculator.Operations
+namespace Calculator.Engine.Operations
 {
     internal class WrongSymbols : IOperation
     {
-        readonly string GoodSymbols = "1234567890(),*-+^ ";
+        readonly string GoodSymbols = "1234567890(),*-+^/ ";
 
-        public WrongSymbols(String symbols) 
+        public WrongSymbols(string symbols)
         {
-            this.GoodSymbols = symbols;
+            GoodSymbols = symbols;
         }
         public WrongSymbols() { }
 
-        public List<String> Apply(List<String> list)
+        public List<string> Apply(List<string> list)
         {
             for (int i = 0; i < list.Count; i++)
             {

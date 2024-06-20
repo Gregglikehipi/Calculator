@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Calculator
+namespace Calculator.Menu
 {
-    internal class Menu
+    internal class ConsoleMenu
     {
         public static void Screen()
         {

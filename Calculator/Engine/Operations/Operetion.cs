@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Calculator.Operations
+namespace Calculator.Engine.Operations
 {
     internal interface IOperation
     {
-        List<String> Apply(List<String> list);
+        List<string> Apply(List<string> list);
     }
 }

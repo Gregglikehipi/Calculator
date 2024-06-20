@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Calculator.Operations
+namespace Calculator.Engine.Operations
 {
     internal class CreateNumbers : IOperation
     {
@@ -14,7 +14,7 @@ namespace Calculator.Operations
         readonly string all = "1234567890,";
 
         public CreateNumbers() { }
-        public List<String> Apply(List<String> list)
+        public List<string> Apply(List<string> list)
         {
             bool flag = false;
             string num = "";
@@ -25,7 +25,7 @@ namespace Calculator.Operations
                     if (stopPoint.IndexOf(list[i].ToString()) != -1)
                         throw new InvalidOperationException("Неправильное число");
                     num += list[i];
-                    for (int j = i + 1;  j < list.Count; j++)
+                    for (int j = i + 1; j < list.Count; j++)
                     {
                         if (all.IndexOf(list[j].ToString()) != -1)
                         {
